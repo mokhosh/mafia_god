@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
         brightness: Brightness.dark,
+        fontFamily: 'Vazir',
       ),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
