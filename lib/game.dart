@@ -16,7 +16,7 @@ class GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: isNight ? Colors.white12 : Colors.blue,
+      backgroundColor: isNight ? Colors.white12 : Colors.blue[600],
       body: SafeArea(
         child: Column(
           children: [
@@ -26,7 +26,7 @@ class GamePageState extends State<GamePage> {
                 crossAxisCount: 3,
                 children: widget.players
                     .map((player) => Opacity(
-                          opacity: player['status'] == 'dead' ? .5 : 1,
+                          opacity: player['status'] == 'dead' ? .3 : 1,
                           child: InkWell(
                             splashColor: Colors.red,
                             onLongPress: () {
@@ -68,6 +68,15 @@ class GamePageState extends State<GamePage> {
               ),
             ),
             Timer(),
+            RaisedButton(
+              onPressed: () {
+                setState(() {
+                  isNight = ! isNight;
+                });
+              },
+              child: Text(isNight ? 'روز میشه' : 'شب میشه'),
+              shape: StadiumBorder(),
+            ),
           ],
         ),
       ),
