@@ -9,68 +9,33 @@ class PlayersPageState extends State<PlayersPage> {
   var players = [
     {
       'name': 'ممدرضا',
-      'status': '',
-      'role': '',
     },
     {
       'name': 'کشا',
-      'status': '',
-      'role': '',
     },
     {
       'name': 'مهدی',
-      'status': '',
-      'role': '',
     },
     {
       'name': 'سدمرتضی',
-      'status': '',
-      'role': '',
     },
     {
       'name': 'دلیر',
-      'status': '',
-      'role': '',
     },
     {
-      'name': 'علی',
-      'status': '',
-      'role': '',
+      'name': 'علی‌رضایی',
     },
     {
       'name': 'رمضانی',
-      'status': '',
-      'role': '',
     },
     {
       'name': 'صادق',
-      'status': '',
-      'role': '',
     },
     {
       'name': 'سدعلی',
-      'status': '',
-      'role': '',
-    },
-    {
-      'name': 'ظاهری',
-      'status': '',
-      'role': '',
     },
     {
       'name': 'طه',
-      'status': '',
-      'role': '',
-    },
-    {
-      'name': 'رها',
-      'status': '',
-      'role': '',
-    },
-    {
-      'name': 'صفا',
-      'status': '',
-      'role': '',
     },
   ];
 
@@ -85,28 +50,28 @@ class PlayersPageState extends State<PlayersPage> {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Stack(
-                alignment: Alignment(-1,0),
+                alignment: Alignment(-1, 0),
                 children: <Widget>[
-                    TextField(
-                      controller: newPlayerName,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(500)
-                          )
-                        ),
-                        hintText: 'افزودن بازیکن جدید',
+                  TextField(
+                    controller: newPlayerName,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 24,
                       ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(500))),
+                      hintText: 'افزودن بازیکن جدید',
                     ),
+                  ),
                   IconButton(
                     icon: Icon(Icons.add),
                     onPressed: () {
                       if (newPlayerName.text.trim() == '') return;
 
                       setState(() {
-                        players.add({
-                          'name': newPlayerName.text.trim()
-                        });
+                        players.add({'name': newPlayerName.text.trim()});
                       });
                       newPlayerName.clear();
                     },
@@ -148,7 +113,17 @@ class PlayersPageState extends State<PlayersPage> {
               onPressed: () {
                 Navigator.pushNamed(context, '/roles', arguments: players);
               },
-              child: Text('تعیین تعداد مافیاها'),
+              padding: EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 24,
+              ),
+              child: Text(
+                'تعیین تعداد مافیاها',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
               shape: StadiumBorder(),
             ),
           ],

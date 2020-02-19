@@ -19,7 +19,17 @@ class ViewRolesPageState extends State<ViewRolesPage> {
             onLongPress: () {
               Navigator.pushNamed(context, '/game', arguments: players);
             },
-            child: Text('من راوی هستم'),
+            padding: EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 24,
+            ),
+            child: Text(
+              'من راوی هستم',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
             shape: StadiumBorder(),
           ),
         ),
@@ -54,9 +64,17 @@ class ViewRolesPageState extends State<ViewRolesPage> {
                         child: Container(
                           padding: EdgeInsets.all(8),
                           alignment: Alignment.center,
-                          child: Text(player['status'] == 'seen'
-                              ? player['role']
-                              : player['name']),
+                          child: Text(
+                            player['status'] == 'seen'
+                                ? player['role']
+                                : player['name'],
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: player['status'] == 'seen'
+                                  ? Colors.white38
+                                  : Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ),

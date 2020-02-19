@@ -17,7 +17,8 @@ class RolesPageState extends State<RolesPage> {
   @override
   Widget build(BuildContext context) {
     players = ModalRoute.of(context).settings.arguments;
-    mafiaCount = players.length < 6 ? 1 : mafiaCount ?? (players.length / 3).floor();
+    mafiaCount =
+        players.length < 6 ? 1 : mafiaCount ?? (players.length / 3).floor();
 
     return Scaffold(
       body: SafeArea(
@@ -27,20 +28,34 @@ class RolesPageState extends State<RolesPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('تعداد کل بازیکنان: ${players.length}'),
-                  Text('تعداد مافیاها:'),
-                  players.length < 6 ? Text('1') : NumberPicker.integer(
-                    itemExtent: 32,
-                    highlightSelectedValue: true,
-                    initialValue: mafiaCount,
-                    minValue: 1,
-                    maxValue: (players.length / 2).floor() - 1,
-                    onChanged: (value) {
-                      setState(() {
-                        mafiaCount = value;
-                      });
-                    },
+                  Text(
+                    'کل بازیکنان',
+                    style: TextStyle(fontSize: 18),
                   ),
+                  Text(
+                    players.length.toString(),
+                    style: TextStyle(fontSize: 72),
+                  ),
+                  SizedBox(height: 64),
+                  Text(
+                    'تعداد مافیاها را انتخاب کنید',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  players.length < 6
+                      ? Text('1')
+                      : NumberPicker.integer(
+                          itemExtent: 32,
+                          highlightSelectedValue: true,
+                          initialValue: mafiaCount,
+                          minValue: 1,
+                          maxValue: (players.length / 2).floor() - 1,
+                          onChanged: (value) {
+                            setState(() {
+                              mafiaCount = value;
+                            });
+                          },
+                        ),
+                  SizedBox(height: 64),
                   InkWell(
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +63,10 @@ class RolesPageState extends State<RolesPage> {
                           Checkbox(
                             value: hasDoctor,
                           ),
-                          Text('دکتر داشته باشیم'),
+                          Text(
+                            'دکتر داشته باشیم',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ]),
                     onTap: () {
                       setState(() {
@@ -63,7 +81,10 @@ class RolesPageState extends State<RolesPage> {
                           Checkbox(
                             value: hasDetective,
                           ),
-                          Text('کارآگاه داشته باشیم'),
+                          Text(
+                            'کارآگاه داشته باشیم',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ]),
                     onTap: () {
                       setState(() {
@@ -79,7 +100,17 @@ class RolesPageState extends State<RolesPage> {
                 assignRoles();
                 Navigator.pushNamed(context, '/view-roles', arguments: players);
               },
-              child: Text('مشاهده نقش‌ها'),
+              padding: EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 24,
+              ),
+              child: Text(
+                'مشاهده نقش‌ها',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
               shape: StadiumBorder(),
             ),
           ],

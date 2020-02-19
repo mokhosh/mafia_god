@@ -23,7 +23,7 @@ class _TimerState extends State<Timer> {
           chartKey.currentState.updateData([
             CircularStackEntry([
               CircularSegmentEntry(value.toDouble(), Colors.red),
-              CircularSegmentEntry(30 - value.toDouble(), Colors.white10),
+              CircularSegmentEntry(30 - value.toDouble(), Colors.white60),
             ]),
           ]);
         }
@@ -43,32 +43,38 @@ class _TimerState extends State<Timer> {
     if (second > 30) {
       stopWatchTimer.onExecute.add(StopWatchExecute.reset);
     }
-    return InkWell(
-      customBorder: StadiumBorder(),
-      onTap: () {
-        if (stopWatchTimer.isRunning()) {
-          stopWatchTimer.onExecute.add(StopWatchExecute.reset);
-        } else {
-          stopWatchTimer.onExecute.add(StopWatchExecute.start);
-        }
-      },
-      child: AnimatedCircularChart(
-        key: chartKey,
-        size: Size(300, 300),
-        chartType: CircularChartType.Radial,
-        edgeStyle: SegmentEdgeStyle.round,
-        holeLabel: second.toString(),
-        labelStyle: new TextStyle(
-          color: second > 25 ? Colors.red : Colors.white10,
-          fontWeight: FontWeight.bold,
-          fontSize: 72.0,
+    return Card(
+      color: Colors.white10,
+      shape: CircleBorder(),
+      child: InkWell(
+        customBorder: StadiumBorder(),
+        onTap: () {
+          if (stopWatchTimer.isRunning()) {
+            stopWatchTimer.onExecute.add(StopWatchExecute.reset);
+          } else {
+            stopWatchTimer.onExecute.add(StopWatchExecute.start);
+          }
+        },
+        child: AnimatedCircularChart(
+          key: chartKey,
+          size: Size(300, 300),
+          chartType: CircularChartType.Radial,
+          edgeStyle: SegmentEdgeStyle.round,
+          holeLabel: second.toString(),
+          labelStyle: new TextStyle(
+            color: second > 25 ? Colors.red : Colors.white60,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Vazir',
+            fontSize: 110,
+            height: second == 0 ? null : 2,
+          ),
+          initialChartData: [
+            CircularStackEntry([
+              CircularSegmentEntry(0.0, Colors.red),
+              CircularSegmentEntry(30.0, Colors.white60),
+            ]),
+          ],
         ),
-        initialChartData: [
-          CircularStackEntry([
-            CircularSegmentEntry(0.0, Colors.red),
-            CircularSegmentEntry(30.0, Colors.white10),
-          ]),
-        ],
       ),
     );
   }
