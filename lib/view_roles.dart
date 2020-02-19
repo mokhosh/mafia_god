@@ -20,13 +20,13 @@ class ViewRolesPageState extends State<ViewRolesPage> {
               Navigator.pushNamed(context, '/game', arguments: players);
             },
             padding: EdgeInsets.symmetric(
-              vertical: 8,
-              horizontal: 24,
+              vertical: 12,
+              horizontal: 36,
             ),
             child: Text(
               'من راوی هستم',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 24,
                 fontWeight: FontWeight.normal,
               ),
             ),

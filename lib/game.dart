@@ -77,7 +77,10 @@ class GamePageState extends State<GamePage> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(player['name']),
+                                      Text(
+                                        player['name'],
+                                        style: TextStyle(fontSize: 18),
+                                      ),
                                       SizedBox(
                                         height: 8,
                                       ),
@@ -85,6 +88,7 @@ class GamePageState extends State<GamePage> {
                                         player['role'],
                                         style: TextStyle(
                                           color: Colors.white30,
+                                          fontSize: 18,
                                         ),
                                       ),
                                     ],
@@ -106,11 +110,12 @@ class GamePageState extends State<GamePage> {
             RaisedButton(
               onPressed: () {
                 setState(() {
-                  isNight = ! isNight;
+                  isNight = !isNight;
                 });
 
                 if (isNight) {
-                  widget.assetsAudioPlayer.playlistPlayAtIndex(Random().nextInt(4));
+                  widget.assetsAudioPlayer
+                      .playlistPlayAtIndex(Random().nextInt(4));
                 } else {
                   widget.assetsAudioPlayer.stop();
                 }

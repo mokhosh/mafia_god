@@ -4,7 +4,7 @@ description: An Android app for managing Mafia games
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.3.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -17,7 +17,7 @@ dependencies:
   stop_watch_timer: ^0.2.0+2
   flutter_circular_chart: ^0.1.0
   assets_audio_player: ^1.2.3
-#  flutter_launcher_icons: ^0.7.4
+  flutter_launcher_icons: ^0.7.4
 #  flutter_svg: any
 #  shared_preferences: ^0.5.6+1
 
@@ -47,7 +47,7 @@ flutter:
 flutter_icons:
   ios: true
   android: true
-  image_path_ios: assets/icon.png
-  image_path_android: assets/icon.png
-  adaptive_icon_background: assets/background.png
-  adaptive_icon_foreground: assets/foreground.png
+  image_path_ios: assets/logo.png
+  image_path_android: assets/logo.png
+  adaptive_icon_background: assets/logo.png
+  adaptive_icon_foreground: assets/logo.png

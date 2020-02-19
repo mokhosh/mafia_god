@@ -37,24 +37,29 @@ class RolesPageState extends State<RolesPage> {
                     style: TextStyle(fontSize: 72),
                   ),
                   SizedBox(height: 64),
-                  Text(
-                    'تعداد مافیاها را انتخاب کنید',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  players.length < 6
-                      ? Text('1')
-                      : NumberPicker.integer(
-                          itemExtent: 32,
-                          highlightSelectedValue: true,
-                          initialValue: mafiaCount,
-                          minValue: 1,
-                          maxValue: (players.length / 2).floor() - 1,
-                          onChanged: (value) {
-                            setState(() {
-                              mafiaCount = value;
-                            });
-                          },
-                        ),
+                  if (players.length < 6)
+                    Text(
+                      'یک مافیا',
+                      style: TextStyle(fontSize: 32),
+                    ),
+                  if (players.length >= 6)
+                    Text(
+                      'تعداد مافیاها را انتخاب کنید',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  if (players.length >= 6)
+                    NumberPicker.integer(
+                      itemExtent: 32,
+                      highlightSelectedValue: true,
+                      initialValue: mafiaCount,
+                      minValue: 1,
+                      maxValue: (players.length / 2).floor() - 1,
+                      onChanged: (value) {
+                        setState(() {
+                          mafiaCount = value;
+                        });
+                      },
+                    ),
                   SizedBox(height: 64),
                   InkWell(
                     child: Row(
