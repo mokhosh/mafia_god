@@ -1,8 +1,12 @@
+import 'dart:math';
+
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:mafia_god/components/timer.dart';
 import 'package:flutter/material.dart';
 
 class GamePage extends StatefulWidget {
   final List players;
+  final assetsAudioPlayer = AssetsAudioPlayer();
 
   GamePage(this.players);
 
@@ -11,7 +15,28 @@ class GamePage extends StatefulWidget {
 }
 
 class GamePageState extends State<GamePage> {
-  bool isNight = true;
+  bool isNight = false;
+
+  @override
+  void initState() {
+    widget.assetsAudioPlayer.openPlaylist(Playlist(
+      startIndex: -1,
+      assetAudioPaths: [
+        "assets/audios/theme.mp3",
+        "assets/audios/love-theme.mp3",
+        "assets/audios/mandolina.mp3",
+        "assets/audios/hiphop.mp3",
+      ],
+    ));
+    widget.assetsAudioPlayer.stop();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.assetsAudioPlayer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +49,7 @@ class GamePageState extends State<GamePage> {
               child: Stack(
                 children: [
                   GridView.count(
-                    padding: EdgeInsets.fromLTRB(8,8,8,350),
+                    padding: EdgeInsets.fromLTRB(8, 8, 8, 350),
                     crossAxisCount: 3,
                     children: widget.players
                         .map((player) => Opacity(
@@ -81,8 +106,14 @@ class GamePageState extends State<GamePage> {
             RaisedButton(
               onPressed: () {
                 setState(() {
-                  isNight = !isNight;
+                  isNight = ! isNight;
                 });
+
+                if (isNight) {
+                  widget.assetsAudioPlayer.playlistPlayAtIndex(Random().nextInt(4));
+                } else {
+                  widget.assetsAudioPlayer.stop();
+                }
               },
               padding: EdgeInsets.symmetric(
                 vertical: 8,

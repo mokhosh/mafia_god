@@ -1,22 +1,28 @@
 PODS:
+  - assets_audio_player (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - stop_watch_timer (0.0.1):
     - Flutter
 
 DEPENDENCIES:
+  - assets_audio_player (from `.symlinks/plugins/assets_audio_player/ios`)
   - Flutter (from `Flutter`)
   - stop_watch_timer (from `.symlinks/plugins/stop_watch_timer/ios`)
 
 EXTERNAL SOURCES:
+  assets_audio_player:
+    :path: ".symlinks/plugins/assets_audio_player/ios"
   Flutter:
     :path: Flutter
   stop_watch_timer:
     :path: ".symlinks/plugins/stop_watch_timer/ios"
 
 SPEC CHECKSUMS:
+  assets_audio_player: 828c5761d1e51c569f40e622db3a2cbfd61ecb7d
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   stop_watch_timer: e88a936c27ce0792104127124f931365160d2f1e
 
-PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+PODFILE CHECKSUM: b2e3be103c75b528b0215b2544c03518ca1e11a7
 
 COCOAPODS: 1.8.4
