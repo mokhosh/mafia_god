@@ -49,7 +49,7 @@ class GamePageState extends State<GamePage> {
               child: Stack(
                 children: [
                   GridView.count(
-                    padding: EdgeInsets.fromLTRB(8, 8, 8, 350),
+                    padding: EdgeInsets.fromLTRB(8, 8, 8, 250),
                     crossAxisCount: 3,
                     children: widget.players
                         .map((player) => Opacity(
