@@ -36,9 +36,9 @@ class RolesPageState extends State<RolesPage> {
                   ),
                   Text(
                     players.length.toString(),
-                    style: TextStyle(fontSize: 72),
+                    style: TextStyle(fontSize: 64),
                   ),
-                  SizedBox(height: 64),
+                  SizedBox(height: 32),
                   if (players.length < 6)
                     Text(
                       'یک مافیا',
@@ -62,7 +62,7 @@ class RolesPageState extends State<RolesPage> {
                         });
                       },
                     ),
-                  SizedBox(height: 64),
+                  SizedBox(height: 32),
                   InkWell(
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -96,6 +96,40 @@ class RolesPageState extends State<RolesPage> {
                     onTap: () {
                       setState(() {
                         hasDetective = !hasDetective;
+                      });
+                    },
+                  ),InkWell(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Checkbox(
+                            value: hasBuff,
+                          ),
+                          Text(
+                            'رویین‌تن داشته باشیم',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ]),
+                    onTap: () {
+                      setState(() {
+                        hasBuff = !hasBuff;
+                      });
+                    },
+                  ),InkWell(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Checkbox(
+                            value: hasSniper,
+                          ),
+                          Text(
+                            'اسنایپر داشته باشیم',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ]),
+                    onTap: () {
+                      setState(() {
+                        hasSniper = !hasSniper;
                       });
                     },
                   ),
