@@ -1,6 +1,5 @@
-import 'package:circle_wave_progress/circle_wave_progress.dart';
-import 'package:flutter/material.dart';
 import 'package:mafia_god/components/timer.dart';
+import 'package:flutter/material.dart';
 
 class GamePage extends StatefulWidget {
   final List players;
