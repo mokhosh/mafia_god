@@ -16,7 +16,7 @@ class ViewRolesPageState extends State<ViewRolesPage> {
       return Scaffold(
         body: Center(
           child: RaisedButton(
-            onPressed: () {
+            onLongPress: () {
               Navigator.pushNamed(context, '/game', arguments: players);
             },
             child: Text('من راوی هستم'),
