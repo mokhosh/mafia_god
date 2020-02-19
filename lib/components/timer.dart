@@ -22,7 +22,7 @@ class _TimerState extends State<Timer> {
         if (chartKey.currentState != null) {
           chartKey.currentState.updateData([
             CircularStackEntry([
-              CircularSegmentEntry(value.toDouble(), Colors.red),
+              CircularSegmentEntry(value.toDouble(), Colors.red[900]),
               CircularSegmentEntry(30 - value.toDouble(), Colors.white60),
             ]),
           ]);
@@ -45,6 +45,7 @@ class _TimerState extends State<Timer> {
     }
     return Card(
       color: Colors.white10,
+      clipBehavior: Clip.antiAlias,
       shape: CircleBorder(),
       child: InkWell(
         customBorder: StadiumBorder(),
@@ -57,20 +58,20 @@ class _TimerState extends State<Timer> {
         },
         child: AnimatedCircularChart(
           key: chartKey,
-          size: Size(300, 300),
+          size: Size(200, 200),
           chartType: CircularChartType.Radial,
           edgeStyle: SegmentEdgeStyle.round,
           holeLabel: second.toString(),
           labelStyle: new TextStyle(
-            color: second > 25 ? Colors.red : Colors.white60,
+            color: second > 25 ? Colors.red[900] : Colors.white60,
             fontWeight: FontWeight.bold,
             fontFamily: 'Vazir',
-            fontSize: 110,
+            fontSize: 85,
             height: second == 0 ? null : 2,
           ),
           initialChartData: [
             CircularStackEntry([
-              CircularSegmentEntry(0.0, Colors.red),
+              CircularSegmentEntry(0.0, Colors.red[900]),
               CircularSegmentEntry(30.0, Colors.white60),
             ]),
           ],

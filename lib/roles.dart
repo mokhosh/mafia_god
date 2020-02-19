@@ -13,6 +13,8 @@ class RolesPageState extends State<RolesPage> {
   int mafiaCount;
   bool hasDoctor = true;
   bool hasDetective = true;
+  bool hasBuff = false;
+  bool hasSniper = false;
 
   @override
   Widget build(BuildContext context) {
@@ -130,6 +132,8 @@ class RolesPageState extends State<RolesPage> {
     roles[roles.indexOf('مافیا')] = 'رئیس مافیا';
     if (hasDoctor) roles[roles.lastIndexOf('شهروند')] = 'پزشک';
     if (hasDetective) roles[roles.lastIndexOf('شهروند')] = 'کارآگاه';
+    if (hasBuff) roles[roles.lastIndexOf('شهروند')] = 'رویین‌تن';
+    if (hasSniper) roles[roles.lastIndexOf('شهروند')] = 'اسنایپر';
     roles.shuffle(Random.secure());
     roles.asMap().forEach((i, role) {
       players[i]['role'] = role;

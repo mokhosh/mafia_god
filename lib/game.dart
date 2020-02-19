@@ -41,7 +41,7 @@ class GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: isNight ? Colors.white12 : Colors.blueGrey[200],
+      backgroundColor: isNight ? Colors.grey[900] : Colors.blueGrey[200],
       body: SafeArea(
         child: Column(
           children: [
