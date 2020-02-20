@@ -73,6 +73,8 @@ class GamePageState extends State<GamePage> {
                           onLongPress: () {
                             setState(() {
                               player['status'] = 'dead';
+                              widget.players.remove(player);
+                              widget.players.add(player);
                             });
                           },
                           onTap: () {
