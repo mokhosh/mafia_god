@@ -7,36 +7,16 @@ class PlayersPage extends StatefulWidget {
 
 class PlayersPageState extends State<PlayersPage> {
   var players = [
-    {
-      'name': 'ممدرضا',
-    },
-    {
-      'name': 'کشا',
-    },
-    {
-      'name': 'مهدی',
-    },
-    {
-      'name': 'سدمرتضی',
-    },
-    {
-      'name': 'دلیر',
-    },
-    {
-      'name': 'علی‌رضایی',
-    },
-    {
-      'name': 'رمضانی',
-    },
-    {
-      'name': 'صادق',
-    },
-    {
-      'name': 'سدعلی',
-    },
-    {
-      'name': 'طه',
-    },
+    {'name': 'محمدرضا'},
+    {'name': 'کشاورز'},
+    {'name': 'مهدی'},
+    {'name': 'رهبری'},
+    {'name': 'دلیر'},
+    {'name': 'رضایی‌نیا'},
+    {'name': 'رمضانی'},
+    {'name': 'صادق'},
+    {'name': 'سیدعلی'},
+    {'name': 'طه'},
   ];
 
   TextEditingController newPlayerName = TextEditingController();
@@ -118,7 +98,7 @@ class PlayersPageState extends State<PlayersPage> {
                 horizontal: 24,
               ),
               child: Text(
-                'تعیین تعداد مافیاها',
+                'تعیین نقش‌ها',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.normal,

@@ -46,7 +46,7 @@ class RolesPageState extends State<RolesPage> {
                     ),
                   if (players.length >= 6)
                     Text(
-                      'تعداد مافیاها را انتخاب کنید',
+                      'تعداد مافیاها',
                       style: TextStyle(fontSize: 18),
                     ),
                   if (players.length >= 6)
@@ -63,75 +63,93 @@ class RolesPageState extends State<RolesPage> {
                       },
                     ),
                   SizedBox(height: 32),
-                  InkWell(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Checkbox(
-                            value: hasDoctor,
-                          ),
-                          Text(
-                            'دکتر داشته باشیم',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ]),
-                    onTap: () {
-                      setState(() {
-                        hasDoctor = !hasDoctor;
-                      });
-                    },
-                  ),
-                  InkWell(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Checkbox(
-                            value: hasDetective,
-                          ),
-                          Text(
-                            'کارآگاه داشته باشیم',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ]),
-                    onTap: () {
-                      setState(() {
-                        hasDetective = !hasDetective;
-                      });
-                    },
-                  ),InkWell(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Checkbox(
-                            value: hasBuff,
-                          ),
-                          Text(
-                            'رویین‌تن داشته باشیم',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ]),
-                    onTap: () {
-                      setState(() {
-                        hasBuff = !hasBuff;
-                      });
-                    },
-                  ),InkWell(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Checkbox(
-                            value: hasSniper,
-                          ),
-                          Text(
-                            'اسنایپر داشته باشیم',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ]),
-                    onTap: () {
-                      setState(() {
-                        hasSniper = !hasSniper;
-                      });
-                    },
+                  Wrap(
+                    children: <Widget>[
+                      InkWell(
+                        child: Container(
+                          width: 200,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Checkbox(
+                                  value: hasDoctor,
+                                ),
+                                Text(
+                                  'دکتر',
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ]),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            hasDoctor = !hasDoctor;
+                          });
+                        },
+                      ),
+                      InkWell(
+                        child: Container(
+                          width: 200,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Checkbox(
+                                  value: hasDetective,
+                                ),
+                                Text(
+                                  'کارآگاه',
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ]),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            hasDetective = !hasDetective;
+                          });
+                        },
+                      ),
+                      InkWell(
+                        child: Container(
+                          width: 200,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Checkbox(
+                                  value: hasBuff,
+                                ),
+                                Text(
+                                  'رویین‌تن',
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ]),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            hasBuff = !hasBuff;
+                          });
+                        },
+                      ),
+                      InkWell(
+                        child: Container(
+                          width: 200,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Checkbox(
+                                  value: hasSniper,
+                                ),
+                                Text(
+                                  'اسنایپر',
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ]),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            hasSniper = !hasSniper;
+                          });
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),

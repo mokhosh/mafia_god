@@ -10,14 +10,26 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             RaisedButton(
               shape: StadiumBorder(),
-              child: Text('شروع بازی'),
+              child: Text(
+                'شروع بازی',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/players');
               },
             ),
             RaisedButton(
               shape: StadiumBorder(),
-              child: Text('تنظیمات'),
+              child: Text(
+                'تنظیمات',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
               onPressed: () {},
             )
           ],

@@ -16,7 +16,7 @@ class GamePage extends StatefulWidget {
 
 class GamePageState extends State<GamePage> {
   bool isNight = false;
-  List assetAudioPaths = [
+  List<String> assetAudioPaths = [
     "assets/audios/theme.mp3",
     "assets/audios/love-theme.mp3",
 //    "assets/audios/mandolina.mp3",
