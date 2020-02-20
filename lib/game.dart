@@ -16,17 +16,18 @@ class GamePage extends StatefulWidget {
 
 class GamePageState extends State<GamePage> {
   bool isNight = false;
+  List assetAudioPaths = [
+    "assets/audios/theme.mp3",
+    "assets/audios/love-theme.mp3",
+//    "assets/audios/mandolina.mp3",
+    "assets/audios/hiphop.mp3",
+  ];
 
   @override
   void initState() {
     widget.assetsAudioPlayer.openPlaylist(Playlist(
       startIndex: -1,
-      assetAudioPaths: [
-        "assets/audios/theme.mp3",
-        "assets/audios/love-theme.mp3",
-        "assets/audios/mandolina.mp3",
-        "assets/audios/hiphop.mp3",
-      ],
+      assetAudioPaths: assetAudioPaths,
     ));
     widget.assetsAudioPlayer.stop();
     super.initState();
@@ -49,7 +50,7 @@ class GamePageState extends State<GamePage> {
           });
 
           if (isNight) {
-            widget.assetsAudioPlayer.playlistPlayAtIndex(Random().nextInt(4));
+            widget.assetsAudioPlayer.playlistPlayAtIndex(Random().nextInt(assetAudioPaths.length));
           } else {
             widget.assetsAudioPlayer.stop();
           }
@@ -113,12 +114,13 @@ class GamePageState extends State<GamePage> {
                       ))
                   .toList(),
             ),
-            if (! isNight) Positioned(
-              bottom: 10,
-              left: 0,
-              right: 0,
-              child: Timer(),
-            ),
+            if (!isNight)
+              Positioned(
+                bottom: 10,
+                left: 0,
+                right: 0,
+                child: Timer(),
+              ),
           ],
         ),
       ),
