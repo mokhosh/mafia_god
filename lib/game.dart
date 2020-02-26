@@ -15,6 +15,7 @@ class GamePage extends StatefulWidget {
 }
 
 class GamePageState extends State<GamePage> {
+  final Timer timer = Timer();
   bool isNight = false;
   List<String> assetAudioPaths = [
     "assets/audios/theme.mp3",
@@ -72,6 +73,7 @@ class GamePageState extends State<GamePage> {
                         child: InkWell(
                           splashColor: Colors.red,
                           onLongPress: () {
+                            if (player['status'] == 'dead') return;
                             setState(() {
                               player['status'] = 'dead';
                               widget.players.remove(player);
@@ -85,6 +87,13 @@ class GamePageState extends State<GamePage> {
                                   ? 'marked'
                                   : 'alive';
                             });
+                            if (!isNight) {
+                              if (player['status'] == 'marked') {
+                                timer.startTimer();
+                              } else if (player['status'] == 'alive') {
+                                timer.resetTimer();
+                              }
+                            }
                           },
                           child: Card(
                             color: player['status'] == 'marked'
@@ -114,13 +123,15 @@ class GamePageState extends State<GamePage> {
                       ))
                   .toList(),
             ),
-            if (!isNight)
-              Positioned(
-                bottom: 10,
-                left: 0,
-                right: 0,
-                child: Timer(),
+            Positioned(
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: Offstage(
+                offstage: isNight,
+                child: timer,
               ),
+            ),
           ],
         ),
       ),

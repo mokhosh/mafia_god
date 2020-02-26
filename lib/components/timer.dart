@@ -5,15 +5,24 @@ import 'package:flutter/material.dart';
 
 class Timer extends StatefulWidget {
   final beepPlayer = AssetsAudioPlayer();
+  final StopWatchTimer stopWatchTimer = StopWatchTimer();
+  final GlobalKey<AnimatedCircularChartState> chartKey =
+      GlobalKey<AnimatedCircularChartState>();
+
+  void startTimer() {
+    this.stopWatchTimer.onExecute.add(StopWatchExecute.reset);
+    this.stopWatchTimer.onExecute.add(StopWatchExecute.start);
+  }
+
+  void resetTimer() {
+    this.stopWatchTimer.onExecute.add(StopWatchExecute.reset);
+  }
 
   @override
   _TimerState createState() => _TimerState();
 }
 
 class _TimerState extends State<Timer> {
-  final GlobalKey<AnimatedCircularChartState> chartKey =
-      GlobalKey<AnimatedCircularChartState>();
-  final StopWatchTimer stopWatchTimer = StopWatchTimer();
   var second = 0;
 
   @override
@@ -21,12 +30,12 @@ class _TimerState extends State<Timer> {
     widget.beepPlayer.open('assets/audios/beep.mp3');
     widget.beepPlayer.stop();
 
-    stopWatchTimer.secondTime.listen(
+    widget.stopWatchTimer.secondTime.listen(
       (value) => setState(() {
         second = value;
 
-        if (chartKey.currentState != null) {
-          chartKey.currentState.updateData([
+        if (widget.chartKey.currentState != null) {
+          widget.chartKey.currentState.updateData([
             CircularStackEntry([
               CircularSegmentEntry(value.toDouble(), Colors.red[900]),
               CircularSegmentEntry(30 - value.toDouble(), Colors.white60),
@@ -39,16 +48,10 @@ class _TimerState extends State<Timer> {
   }
 
   @override
-  void dispose() async {
-    super.dispose();
-    await stopWatchTimer.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     if (second > 30) {
       widget.beepPlayer.play();
-      stopWatchTimer.onExecute.add(StopWatchExecute.reset);
+      widget.stopWatchTimer.onExecute.add(StopWatchExecute.reset);
     }
     return Card(
       color: Colors.white10,
@@ -57,14 +60,17 @@ class _TimerState extends State<Timer> {
       child: InkWell(
         customBorder: StadiumBorder(),
         onTap: () {
-          if (stopWatchTimer.isRunning()) {
-            stopWatchTimer.onExecute.add(StopWatchExecute.reset);
+          if (widget.stopWatchTimer.isRunning()) {
+            widget.stopWatchTimer.onExecute.add(StopWatchExecute.stop);
           } else {
-            stopWatchTimer.onExecute.add(StopWatchExecute.start);
+            widget.stopWatchTimer.onExecute.add(StopWatchExecute.start);
           }
         },
+        onLongPress: () {
+          widget.stopWatchTimer.onExecute.add(StopWatchExecute.reset);
+        },
         child: AnimatedCircularChart(
-          key: chartKey,
+          key: widget.chartKey,
           size: Size(200, 200),
           chartType: CircularChartType.Radial,
           edgeStyle: SegmentEdgeStyle.round,
