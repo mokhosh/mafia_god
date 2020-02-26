@@ -1,8 +1,11 @@
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 
 class Timer extends StatefulWidget {
+  final beepPlayer = AssetsAudioPlayer();
+
   @override
   _TimerState createState() => _TimerState();
 }
@@ -15,6 +18,9 @@ class _TimerState extends State<Timer> {
 
   @override
   void initState() {
+    widget.beepPlayer.open('assets/audios/beep.mp3');
+    widget.beepPlayer.stop();
+
     stopWatchTimer.secondTime.listen(
       (value) => setState(() {
         second = value;
@@ -41,6 +47,7 @@ class _TimerState extends State<Timer> {
   @override
   Widget build(BuildContext context) {
     if (second > 30) {
+      widget.beepPlayer.play();
       stopWatchTimer.onExecute.add(StopWatchExecute.reset);
     }
     return Card(
