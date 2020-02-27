@@ -25,7 +25,7 @@ class RolesPageState extends State<RolesPage> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
@@ -156,23 +156,28 @@ class RolesPageState extends State<RolesPage> {
                 ],
               ),
             ),
-            RaisedButton(
-              onPressed: () {
-                assignRoles();
-                Navigator.pushNamed(context, '/view-roles', arguments: players);
-              },
-              padding: EdgeInsets.symmetric(
-                vertical: 8,
-                horizontal: 24,
-              ),
-              child: Text(
-                'مشاهده نقش‌ها',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.normal,
+            Column(
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () {
+                    assignRoles();
+                    Navigator.pushNamed(context, '/view-roles',
+                        arguments: players);
+                  },
+                  padding: EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 24,
+                  ),
+                  child: Text(
+                    'مشاهده نقش‌ها',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  shape: StadiumBorder(),
                 ),
-              ),
-              shape: StadiumBorder(),
+              ],
             ),
           ],
         ),
