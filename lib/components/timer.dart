@@ -27,9 +27,6 @@ class _TimerState extends State<Timer> {
 
   @override
   void initState() {
-    widget.beepPlayer.open('assets/audios/beep.mp3');
-    widget.beepPlayer.stop();
-
     widget.stopWatchTimer.secondTime.listen(
       (value) => setState(() {
         second = value;
@@ -50,7 +47,7 @@ class _TimerState extends State<Timer> {
   @override
   Widget build(BuildContext context) {
     if (second > 30) {
-      widget.beepPlayer.play();
+      widget.beepPlayer.open('assets/audios/beep.mp3');
       widget.stopWatchTimer.onExecute.add(StopWatchExecute.reset);
     }
     return Card(
