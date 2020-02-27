@@ -69,7 +69,7 @@ class RolesPageState extends State<RolesPage> {
                     children: <Widget>[
                       InkWell(
                         child: Container(
-                          width: 200,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -90,7 +90,7 @@ class RolesPageState extends State<RolesPage> {
                       ),
                       InkWell(
                         child: Container(
-                          width: 200,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -111,7 +111,7 @@ class RolesPageState extends State<RolesPage> {
                       ),
                       InkWell(
                         child: Container(
-                          width: 200,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -132,7 +132,7 @@ class RolesPageState extends State<RolesPage> {
                       ),
                       InkWell(
                         child: Container(
-                          width: 200,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
