@@ -20,7 +20,6 @@ class GamePageState extends State<GamePage> {
   List<String> assetAudioPaths = [
     "assets/audios/theme.mp3",
     "assets/audios/love-theme.mp3",
-//    "assets/audios/mandolina.mp3",
     "assets/audios/hiphop.mp3",
   ];
 
@@ -51,6 +50,7 @@ class GamePageState extends State<GamePage> {
           });
 
           if (isNight) {
+            timer.resetTimer();
             widget.assetsAudioPlayer.playlistPlayAtIndex(Random().nextInt(assetAudioPaths.length));
           } else {
             widget.assetsAudioPlayer.stop();
